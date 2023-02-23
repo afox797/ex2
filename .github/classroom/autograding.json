@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "Valid report.pdf uploaded",
+      "setup": "",
+      "run": "file report.pdf | grep PDF",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    },
+    {
+      "name": "Required files uploaded",
+      "setup": "",
+      "run": "test -r db/mydb.sql -a -r TESTING.md -a -d webapp",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}
