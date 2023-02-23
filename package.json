@@ -1,0 +1,26 @@
+{
+  "name": "cps404-exercise2-afox797",
+  "version": "1.0.0",
+  "description": "web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjucps404/cps404-exercise2-afox797.git"
+  },
+  "author": "Andrew Fox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bjucps404/cps404-exercise2-afox797/issues"
+  },
+  "homepage": "https://github.com/bjucps404/cps404-exercise2-afox797#readme",
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}
