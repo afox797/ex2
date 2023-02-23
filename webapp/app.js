@@ -1,6 +1,7 @@
 const express = require('express');
 
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
 const dbhost = process.env.DBHOST || 'localhost';
 const dbPass = process.env.MYSQL_PASSWORD || 'mysql';
@@ -16,6 +17,7 @@ function getConnection () {
 }
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/registrations', function (req, res) {
     const { firstName, lastName, grade, email, shirtSize, hrUsername } = req.body;
@@ -48,10 +50,10 @@ app.post('/registrations', function (req, res) {
             grade,
             email,
             shirt_size: shirtSize,
-            hr_username: hrUsername
+            username: hrUsername
         };
 
-        const query = 'INSERT INTO registrations SET ?';
+        const query = 'INSERT INTO Registrations SET ?';
 
         connection.query(query, registration, function (err) {
             if (err) {
@@ -61,6 +63,31 @@ app.post('/registrations', function (req, res) {
             }
 
             res.status(200).send('Registration successful');
+            connection.destroy();
+        });
+    });
+});
+
+app.get('/registrations', function (req, res) {
+    const connection = getConnection();
+
+    connection.connect(function (err) {
+        if (err) {
+            console.log('Problem connecting to database', err);
+            res.status(500).send('Unable to connect to database! ' + err);
+            return;
+        }
+
+        const query = 'SELECT * FROM Registrations';
+
+        connection.query(query, function (err, results) {
+            if (err) {
+                console.log('Problem retrieving registrations', err);
+                res.status(500).send('Unable to retrieve registrations! ' + err);
+                return;
+            }
+
+            res.json(results);
             connection.destroy();
         });
     });

@@ -1,5 +1,4 @@
 create table Registrations (
-  id integer primary key,
   first_name varchar(30),
   last_name varchar(30),
   grade integer,
