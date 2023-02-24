@@ -22,7 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/registrations', function (req, res) {
     const { firstName, lastName, grade, email, shirtSize, hrUsername } = req.body;
 
-    // Validate input
     if (!firstName || !lastName || !grade || !email || !shirtSize || !hrUsername) {
         return res.status(400).send('All fields are required.');
     }
